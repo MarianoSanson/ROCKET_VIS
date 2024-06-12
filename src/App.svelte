@@ -1,5 +1,6 @@
 <script>
-  import { onMount } from 'svelte';
+  import {onMount} from 'svelte';
+  import {narrative_frames} from './narrative.js';
 
   onMount(() => {
     const moon = document.querySelector('.moon');
@@ -42,7 +43,7 @@
         experiencia cinematográfica única y filosófica.
       </p>
   
-      <hr id="divisor_line" />
+      <hr id="divisor_line"/>
   
       <img
         src="/images/portada-2001.png"
@@ -53,45 +54,50 @@
   </section>
 
   <section class="third_section">
-    <p style="color: aliceblue; font-size:xx-large">EXPLICACION DEL ANALISIS NARRATIVO</p>
+    <h1 id="section_header">ANALISIS NARRATIVO</h1>
+    <hr id="header_underline">
+    <p style="color: aliceblue; margin-left: 2%; font-size:x-large">Dividimos la narrativa de la pelicula en cinco categorias diferentes y, además, 
+      decidimos asignarle a cada frame una duración de 5 minutos
+    </p>
+    <div class="narratives_container">
+      <div class="narrative">
+        <div class="category" style="background-color: #8FFF9A;"></div>
+        <h4>Introduccion/Exposicion</h4>
+      </div>
+
+      <div class="narrative">
+        <div class="category" style="background-color: #FF7B5E;"></div>
+        <h4>Accion Creciente</h4>
+      </div>
+
+      <div class="narrative">
+        <div class="category" style="background-color: #CF1E1E;"></div>
+        <h4>Climax</h4>
+      </div>
+
+      <div class="narrative">
+        <div class="category" style="background-color: #FFFBA3;"></div>
+        <h4>Accion Decreciente</h4>
+      </div>
+
+      <div class="narrative">
+        <div class="category" style="background-color: #7EFFFF;"></div>
+        <h4>Resolucion</h4>
+      </div>
+    </div>
+    <div class="narrative_analysis">
+      <div class="cards">
+        {#each narrative_frames as frame}
+          <div style="background-color: {frame.background};"></div>
+          
+        {/each}
+      </div>
+    </div>
   </section>
 
   <section class="fourth_section">
-    <h3 style="color: aliceblue;">ANALISIS DE COLOR</h3>
-    <div class="narrative_analysis">
-      <div class="cards">
-        <div class="card tension"></div>
-        <div class="card neutro"></div>
-        <div class="card desarrollo"></div>
-        <div class="card tension"></div>
-        <div class="card neutro"></div>
-        <div class="card desarrollo"></div>
-        <div class="card tension"></div>
-        <div class="card neutro"></div>
-        <div class="card desarrollo"></div>
-        <div class="card tension"></div>
-        <div class="card neutro"></div>
-        <div class="card desarrollo"></div>
-        <div class="card tension"></div>
-        <div class="card tension"></div>
-        <div class="card neutro"></div>
-        <div class="card tension"></div>
-        <div class="card tension"></div>
-        <div class="card neutro"></div>
-        <div class="card tension"></div>
-        <div class="card tension"></div>
-        <div class="card neutro"></div>
-        <div class="card tension"></div>
-        <div class="card tension"></div>
-        <div class="card neutro"></div>
-        <div class="card tension"></div>
-        <div class="card tension"></div>
-        <div class="card tension"></div>
-        <div class="card neutro"></div>
-        <div class="card tension"></div>
-        <div class="card tension"></div>
-      </div>
-    </div>
+    <h1 id="section_header">COLOR</h1>
+    <hr id="header_underline">
   </section>
 </main>
 
@@ -110,40 +116,45 @@
     height: 100vh;
   }
 
+  h4{
+    color: aliceblue;
+    font-weight: 800;
+  }
+
   .planets {
     position: relative;
-    display: flex; /* Usa Flexbox */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
   }
 
   .planets img {
     position: absolute;
-    transition: transform 0.3s ease; /* Agrega una transición suave */
+    transition: transform 0.3s ease;
   }
 
   .moon,
   .earth,
   .sun {
     position: absolute;
-    transition: top 0.3s ease; /* Agregar una transición para un movimiento suave */
+    transition: top 0.3s ease;
   }
 
   .moon {
     z-index: 3;
-    animation: moonTransition 30s forwards; /* Animar hacia la izquierda */
+    animation: moonTransition 5s forwards;
 
   }
 
   .earth {
     z-index: 2;
-    animation: earthTransition 30s forwards;
+    animation: earthTransition 5s forwards;
   }
 
   .sun {
     z-index: 1;
-    animation: sunTransition 30s forwards; /* Animar hacia la derecha */
+    animation: sunTransition 5s forwards;
   }
 
   @keyframes sunTransition {
@@ -210,7 +221,7 @@
   }
 
   #summary {
-    color: #ffffff;
+    color: aliceblue;
     font-size: 27px;
     text-align: left;
     width: 28%;
@@ -229,10 +240,43 @@
   }
 
   .narrative_analysis {
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  #section_header{
+    color: aliceblue;
+    font-size:xx-large;
+    padding-top: 2%;
+    padding-left: 2%;
+    margin: 0;
+  }
+
+  #header_underline{
+    width: auto;
+    margin: 0;
+    margin-left: 2%;
+    margin-right:2%;
+  }
+  
+  .narratives_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .narrative{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .category{
+    width: 30px;
+    height: 150px;
+    border-radius: 10px;
   }
 
   .cards {
@@ -241,7 +285,7 @@
     margin-top: 100px;
     gap: 5px;
   }
-
+/* 
   .cards .tension {
     background-color: #cf1e1e;
   }
@@ -252,7 +296,7 @@
 
   .cards .desarrollo {
     background-color: #ffffff;
-  }
+  } */
 
   .cards .card {
     display: flex;
@@ -269,6 +313,7 @@
 
   .cards .card:hover {
     width: 330px;
+    background-image:url("/images/imagen-piola.png");
   }
 
   .cards:hover > .card:not(:hover) {
