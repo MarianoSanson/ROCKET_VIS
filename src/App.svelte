@@ -1,16 +1,47 @@
 <script>
-  import {onMount} from 'svelte';
-  import {narrative_frames} from './narrative.js';
+  import {onMount} from "svelte";
+
+  let counter = 0;
+  const target = 146000000;
+  const duration = 3000; //Duracion de la animacion
+  let section;
+  let observer;
+
+  const startCounter = () => {
+    const startTime = Date.now();
+    const updateCounter = () => {
+      const currentTime = Date.now();
+      const elapsedTime = currentTime - startTime;
+      if (elapsedTime < duration) {
+        counter = Math.floor((target / duration) * elapsedTime);
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter = target;
+      }
+    };
+    updateCounter();
+  };
+
+  const handleIntersect = entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startCounter();
+        observer.unobserve(entry.target);
+      }
+    });
+  };
 
   onMount(() => {
-    const moon = document.querySelector('.moon');
-    const sun = document.querySelector('.sun');
-    const earth = document.querySelector('.earth')
-    
+    const moon = document.querySelector(".moon");
+    const sun = document.querySelector(".sun");
+    const earth = document.querySelector(".earth");
 
-    moon.classList.add('move-left');
-    sun.classList.add('move-right');
-    earth.classList.add('move-left');
+    moon.classList.add("move-left");
+    sun.classList.add("move-right");
+    earth.classList.add("move-left");
+
+    observer = new IntersectionObserver(handleIntersect);
+    observer.observe(section);
   });
 </script>
 
@@ -25,49 +56,50 @@
       <img src="/images/earth.png" alt="Earth" class="earth" />
       <img src="/images/sun.png" alt="Sun" class="sun" />
       <div class="typewriter">
-        <h1 style="color: aliceblue; font-size:70px">2001: UNA ODISEA DEL ESPACIO</h1>
+        <h1 style="color: aliceblue; font-size:70px">
+          2001: UNA ODISEA DEL ESPACIO
+        </h1>
       </div>
     </div>
   </section>
 
   <section class="second_section">
     <div class="introduction">
-      <p id="summary">
-        "2001: Una odisea del espacio" es una película de ciencia ficción de 1968
-        dirigida por Stanley Kubrick, basada en una historia de Arthur C. Clarke.
-        La película se centra en un misterioso monolito que parece influir en la
-        evolución humana desde la prehistoria hasta el futuro. En el año 2001, una
-        misión espacial hacia Júpiter a bordo de la nave Discovery One enfrenta
-        desafíos inesperados. La película explora temas profundos sobre la
-        inteligencia, la tecnología y el destino de la humanidad, presentando una
-        experiencia cinematográfica única y filosófica.
-      </p>
-  
-      <hr id="divisor_line"/>
-  
       <img
         src="/images/portada-2001.png"
         alt="portada pelicula"
         id="movie_image"
       />
+
+      <p id="summary">
+        "2001: Una odisea del espacio" es una película de ciencia ficción de
+        1968 dirigida por Stanley Kubrick, basada en una historia de Arthur C.
+        Clarke. La película se centra en un misterioso monolito que parece
+        influir en la evolución humana desde la prehistoria hasta el futuro. En
+        el año 2001, una misión espacial hacia Júpiter a bordo de la nave
+        Discovery One enfrenta desafíos inesperados. La película explora temas
+        profundos sobre la inteligencia, la tecnología y el destino de la
+        humanidad, presentando una experiencia cinematográfica única y
+        filosófica.
+      </p>
     </div>
   </section>
 
   <section class="third_section">
-    <h1 id="section_header">ANALISIS NARRATIVO</h1>
-    <hr id="header_underline">
-    <p style="color: aliceblue; margin-left: 2%; font-size:x-large">Dividimos la narrativa de la pelicula en cinco categorias diferentes y, además, 
-      decidimos asignarle a cada frame una duración de 5 minutos
+    <h1 id="section_header">ANÁLISIS NARRATIVO</h1>
+    <p style="color: aliceblue; font-size:21px; text-align:center">
+      Dividimos la narrativa de la pelicula en cinco categorias diferentes y,
+      además, decidimos asignarle a cada frame una duración de 5 minutos
     </p>
     <div class="narratives_container">
       <div class="narrative">
         <div class="category" style="background-color: #8FFF9A;"></div>
-        <h4>Introduccion/Exposicion</h4>
+        <h4>Introducción</h4>
       </div>
 
       <div class="narrative">
         <div class="category" style="background-color: #FF7B5E;"></div>
-        <h4>Accion Creciente</h4>
+        <h4>Acción Creciente</h4>
       </div>
 
       <div class="narrative">
@@ -77,46 +109,155 @@
 
       <div class="narrative">
         <div class="category" style="background-color: #FFFBA3;"></div>
-        <h4>Accion Decreciente</h4>
+        <h4>Acción Decreciente</h4>
       </div>
 
       <div class="narrative">
         <div class="category" style="background-color: #7EFFFF;"></div>
-        <h4>Resolucion</h4>
+        <h4>Resolución</h4>
       </div>
     </div>
     <div class="narrative_analysis">
       <div class="cards">
-        {#each narrative_frames as frame}
-          <div style="background-color: {frame.background};"></div>
-          
-        {/each}
+        <div class="card" style="background-color: #8FFF9A;"></div>
+        <div class="card neutro" style="background-color: #8FFF9A;"></div>
+        <div class="card desarrollo" style="background-color: #FF7B5E;"></div>
+        <div class="card tension" style="background-color: #CF1E1E;"></div>
+        <div class="card neutro" style="background-color: #FFFBA3;"></div>
+        <div class="card desarrollo" style="background-color: #8FFF9A;"></div>
+        <div class="card tension" style="background-color: #8FFF9A;"></div>
+        <div class="card neutro" style="background-color: #8FFF9A;"></div>
+        <div class="card desarrollo" style="background-color: #FF7B5E;"></div>
+        <div class="card tension" style="background-color: #FF7B5E;"></div>
+        <div class="card neutro" style="background-color: #CF1E1E;"></div>
+        <div class="card desarrollo" style="background-color: #8FFF9A;"></div>
+        <div class="card tension" style="background-color: #8FFF9A;"></div>
+        <div class="card tension" style="background-color: #8FFF9A;"></div>
+        <div class="card neutro" style="background-color: #8FFF9A;"></div>
+        <div class="card tension" style="background-color: #8FFF9A;"></div>
+        <div class="card tension" style="background-color: #FF7B5E;"></div>
+        <div class="card neutro" style="background-color: #FF7B5E;"></div>
+        <div class="card tension" style="background-color: #CF1E1E;"></div>
+        <div class="card tension" style="background-color: #CF1E1E;"></div>
+        <div class="card neutro" style="background-color: #FFFBA3;"></div>
+        <div class="card tension" style="background-color: #FFFBA3;"></div>
+        <div class="card tension" style="background-color: #7EFFFF;"></div>
+        <div class="card neutro" style="background-color: #8FFF9A;"></div>
+        <div class="card tension" style="background-color: #8FFF9A;"></div>
+        <div class="card tension" style="background-color: #8FFF9A;"></div>
+        <div class="card tension" style="background-color: #FF7B5E;"></div>
+        <div class="card neutro" style="background-color: #FF7B5E;"></div>
+        <div class="card tension" style="background-color: #CF1E1E;"></div>
+        <div class="card tension" style="background-color: #7EFFFF;"></div>
       </div>
     </div>
   </section>
 
   <section class="fourth_section">
     <h1 id="section_header">COLOR</h1>
-    <hr id="header_underline">
+    <p style="color: aliceblue; font-size:21px; text-align:center">
+      Nos propusimos analizar cómo el uso del color en las escenas de la 
+      pelicula se relaciona con lo que estas buscan transmitir.<br>A raiz de esto 
+      llegamos a la siguiente clasificacion:
+    </p>
+    <div class="narratives_container">
+      <div class="narrative">
+        <div class="category" style="background-color: #F18200;"></div>
+        <h4>Cálido Saturado</h4>
+      </div>
+
+      <div class="narrative">
+        <div class="category" style="background-color: #A97C48;"></div>
+        <h4>Cálido Desaturado</h4>
+      </div>
+
+      <div class="narrative">
+        <div class="category" style="background-color: #9DF3FF;"></div>
+        <h4>Frio Saturado</h4>
+      </div>
+
+      <div class="narrative">
+        <div class="category" style="background-color: #CECECE;"></div>
+        <h4>Frio Desaturado</h4>
+      </div>
+
+    </div>
+    <div class="narrative_analysis">
+      <div class="cards">
+        <div class="card" style="background-color: #F18200;"></div>
+        <div class="card neutro" style="background-color: #CECECE;"></div>
+        <div class="card desarrollo" style="background-color: #A97C48;"></div>
+        <div class="card tension" style="background-color: #A97C48;"></div>
+        <div class="card neutro" style="background-color: #A97C48;"></div>
+        <div class="card desarrollo" style="background-color: #CECECE;"></div>
+        <div class="card tension" style="background-color: #9DF3FF;"></div>
+        <div class="card neutro" style="background-color: #F18200;"></div>
+        <div class="card desarrollo" style="background-color: #CECECE;"></div>
+        <div class="card tension" style="background-color: #9DF3FF;"></div>
+        <div class="card neutro" style="background-color: #F18200;"></div>
+        <div class="card desarrollo" style="background-color: #CECECE;"></div>
+        <div class="card tension" style="background-color: #CECECE;"></div>
+        <div class="card tension" style="background-color: #CECECE;"></div>
+        <div class="card neutro" style="background-color: #CECECE;"></div>
+        <div class="card tension" style="background-color: #CECECE;"></div>
+        <div class="card tension" style="background-color: #F18200;"></div>
+        <div class="card neutro" style="background-color: #F18200;"></div>
+        <div class="card tension" style="background-color: #9DF3FF;"></div>
+        <div class="card tension" style="background-color: #CECECE;"></div>
+        <div class="card neutro" style="background-color: #F18200;"></div>
+        <div class="card tension" style="background-color: #F18200;"></div>
+        <div class="card tension" style="background-color: #F18200;"></div>
+        <div class="card neutro" style="background-color: #CECECE;"></div>
+        <div class="card tension" style="background-color: #F18200;"></div>
+        <div class="card tension" style="background-color: #F18200;"></div>
+        <div class="card tension" style="background-color: #9DF3FF;"></div>
+        <div class="card neutro" style="background-color: #9DF3FF;"></div>
+        <div class="card tension" style="background-color: #9DF3FF;"></div>
+        <div class="card tension" style="background-color: #CECECE;"></div>
+      </div>
   </section>
+
+  <section class="fifth_section">
+    <h1 id="section_header">DESCOMPOSICION DEL AUDIO</h1>
+  </section>
+
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+
+  <section bind:this={section} class="sixth_section">
+    <h1 id="section_header">FICHA TECNICA</h1>
+    <h3 id="technic_text">Dirigida por</h3>
+    <h3 id="technic_text">Stanley Kubrick</h3>
+    <div class="counter">{counter.toLocaleString()}</div>
+  </section>
+
+  <footer></footer>
 </main>
 
 <style>
+  @font-face {
+    font-family: "Futura";
+    src: url("public\images\fonts\Futura Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
   :global(html, body) {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     margin: 0;
   }
 
   * {
-    font-family: Raleway;
+    font-family: Futura;
   }
 
-  section{
+  section {
     scroll-snap-align: start;
     height: 100vh;
   }
 
-  h4{
+  h4 {
     color: aliceblue;
     font-weight: 800;
   }
@@ -144,7 +285,6 @@
   .moon {
     z-index: 3;
     animation: moonTransition 5s forwards;
-
   }
 
   .earth {
@@ -175,7 +315,7 @@
     }
   }
 
-  @keyframes earthTransition{
+  @keyframes earthTransition {
     0% {
       transform: translateY(0);
     }
@@ -184,59 +324,95 @@
     }
   }
 
-  .typewriter{
+  .typewriter {
     z-index: 5;
     margin-top: 200px;
   }
 
   .typewriter h1 {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid orange; /* The typwriter cursor */
+    border-right: 0.15em solid orange; /* The typwriter cursor */
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    letter-spacing: .15em; /* Adjust as needed */
+    letter-spacing: 0.15em; /* Adjust as needed */
     animation:
       typing 4s steps(40, end),
-      blink-caret .75s step-end infinite;
+      blink-caret 0.75s step-end infinite;
   }
 
   /* The typing effect */
   @keyframes typing {
-    0% { width: 0 }
-    100% { width: 100% }
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
   }
 
   /* The typewriter cursor effect */
   @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: orange;
+    }
   }
 
   .introduction {
     display: flex;
-    gap: 10%;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 10%;
     height: 100vh;
   }
 
   #summary {
     color: aliceblue;
-    font-size: 27px;
+    font-size: 27.7px;
     text-align: left;
-    width: 28%;
     margin: 0;
-  }
-
-  #divisor_line {
-    background-color: #ffffff;
-    width: 4px;
-    height: 80vh;
-    margin: 0;
+    height: 583.675px;
+    width: 394.062px;
   }
 
   #movie_image {
     height: 80vh;
+  }
+
+  .third_section{
+    padding-top: 50px;
+    margin: 50px;
+  }
+
+  #section_header {
+    color: aliceblue;
+    font-size: 50px;
+    text-align: center;
+  }
+
+  .narratives_container {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    justify-content: center;
+    margin-top: 80px;
+  }
+
+  .narrative {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .category {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
   }
 
   .narrative_analysis {
@@ -245,58 +421,12 @@
     justify-content: center;
   }
 
-  #section_header{
-    color: aliceblue;
-    font-size:xx-large;
-    padding-top: 2%;
-    padding-left: 2%;
-    margin: 0;
-  }
-
-  #header_underline{
-    width: auto;
-    margin: 0;
-    margin-left: 2%;
-    margin-right:2%;
-  }
-  
-  .narratives_container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .narrative{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .category{
-    width: 30px;
-    height: 150px;
-    border-radius: 10px;
-  }
-
   .cards {
     height: fit-content;
     display: flex;
     margin-top: 100px;
     gap: 5px;
   }
-/* 
-  .cards .tension {
-    background-color: #cf1e1e;
-  }
-
-  .cards .neutro {
-    background-color: #e4810d;
-  }
-
-  .cards .desarrollo {
-    background-color: #ffffff;
-  } */
 
   .cards .card {
     display: flex;
@@ -313,12 +443,43 @@
 
   .cards .card:hover {
     width: 330px;
-    background-image:url("/images/imagen-piola.png");
+    background-image: url("/images/imagen-piola.png");
   }
 
   .cards:hover > .card:not(:hover) {
     filter: blur(10px);
     transform: scale(0.9, 0.9);
+  }
+
+  .fourth_section{
+    padding-top: 30px;
+    margin: 50px;
+  }
+
+
+  .fifth_section{
+    padding-top: 30px;
+    margin: 50px;
+  }
+
+
+
+  .sixth_section{
+    padding-top: 30px;
+    margin: 50px;
+  }
+
+  #technic_text{
+    font-size: 3em;
+    color: aliceblue;
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  .counter {
+    font-size: 3em;
+    font-weight: bold;
+    color: aliceblue; /* Cambia el color como desees */
   }
 
   #stars {

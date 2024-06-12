@@ -1,8 +1,8 @@
 export const narrative_frames = [
     {
-        "minute": null,
+        "minute": "1:57",
         "path": "",
-        "background": ""
+        "background": "#8FFF9A"
     },
     {
         "minute": null,
