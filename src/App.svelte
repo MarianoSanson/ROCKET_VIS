@@ -1,55 +1,68 @@
 <script>
-  import {onMount} from "svelte";
+  import { onMount } from "svelte";
 
-  let counter = 0;
-  const target = 146000000;
-  const duration = 3000; //Duracion de la animacion
-  let section;
-  let observer;
+  let audio; // Definir la variable de audio
 
-  const startCounter = () => {
+  const startCounter = (element, target, suffix) => {
+    const duration = 3500; // 3.5 segundos
+    let counter = 0;
     const startTime = Date.now();
+
     const updateCounter = () => {
       const currentTime = Date.now();
       const elapsedTime = currentTime - startTime;
       if (elapsedTime < duration) {
         counter = Math.floor((target / duration) * elapsedTime);
+        element.textContent = counter.toLocaleString() + suffix;
         requestAnimationFrame(updateCounter);
       } else {
-        counter = target;
+        element.textContent = target.toLocaleString() + suffix;
       }
     };
+
     updateCounter();
   };
 
-  const handleIntersect = entries => {
-    entries.forEach(entry => {
+  const handleIntersect = (entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        startCounter();
+        const target = parseInt(entry.target.dataset.target, 10);
+        const suffix = entry.target.dataset.suffix || "";
+        startCounter(entry.target, target, suffix);
         observer.unobserve(entry.target);
       }
     });
   };
 
+  let observer;
+
   onMount(() => {
-    const moon = document.querySelector(".moon");
-    const sun = document.querySelector(".sun");
-    const earth = document.querySelector(".earth");
+    // Obtener el elemento de audio del DOM
+    audio = document.querySelector("audio");
 
-    moon.classList.add("move-left");
-    sun.classList.add("move-right");
-    earth.classList.add("move-left");
+    // Reproducir el audio al cargar la página
+    if (audio) {
+      audio.play().catch((error) => {
+        console.log("Error al reproducir el audio:", error);
+      });
+    }
 
+    // Observar los elementos que requieren contador
+    const elements = document.querySelectorAll(".counter");
     observer = new IntersectionObserver(handleIntersect);
-    observer.observe(section);
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
   });
 </script>
+
 
 <main>
   <div id="stars"></div>
   <div id="stars2"></div>
   <div id="stars3"></div>
-
+  <audio bind:this={audio} src="/audio/2001-AUDIO.mp3" preload="auto"></audio>
   <section class="first_section">
     <div class="planets">
       <img src="/images/moon.png" alt="Moon" class="moon" />
@@ -156,9 +169,9 @@
   <section class="fourth_section">
     <h1 id="section_header">COLOR</h1>
     <p style="color: aliceblue; font-size:21px; text-align:center">
-      Nos propusimos analizar cómo el uso del color en las escenas de la 
-      pelicula se relaciona con lo que estas buscan transmitir.<br>A raiz de esto 
-      llegamos a la siguiente clasificacion:
+      Nos propusimos analizar cómo el uso del color en las escenas de la
+      pelicula se relaciona con lo que estas buscan transmitir.<br />A raiz de
+      esto llegamos a la siguiente clasificacion:
     </p>
     <div class="narratives_container">
       <div class="narrative">
@@ -180,7 +193,6 @@
         <div class="category" style="background-color: #CECECE;"></div>
         <h4>Frio Desaturado</h4>
       </div>
-
     </div>
     <div class="narrative_analysis">
       <div class="cards">
@@ -215,6 +227,7 @@
         <div class="card tension" style="background-color: #9DF3FF;"></div>
         <div class="card tension" style="background-color: #CECECE;"></div>
       </div>
+    </div>
   </section>
 
   <section class="fifth_section">
@@ -225,14 +238,96 @@
   <div id="stars2"></div>
   <div id="stars3"></div>
 
-  <section bind:this={section} class="sixth_section">
+  <section class="sixth_section">
     <h1 id="section_header">FICHA TECNICA</h1>
-    <h3 id="technic_text">Dirigida por</h3>
-    <h3 id="technic_text">Stanley Kubrick</h3>
-    <div class="counter">{counter.toLocaleString()}</div>
-  </section>
+    <div class="row">
+      <div class="technic_container">
+        <h3 id="technic_head">Dirigida por</h3>
+        <h3 id="technic_text">Stanley Kubrick</h3>
+      </div>
 
-  <footer></footer>
+      <div>
+        <h3 id="technic_head">Género</h3>
+        <h3 id="technic_text">Ciencia Ficción</h3>
+      </div>
+
+      <div>
+        <h3 id="technic_head">Duración</h3>
+        <h3
+          id="technic_text"
+          data-target="142"
+          data-suffix=" minutos"
+          class="counter"
+        >
+          142 minutos
+        </h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <h3 id="technic_head">Año de lanzamiento</h3>
+        <h3 id="technic_text" data-target="1968">1968</h3>
+      </div>
+
+      <div>
+        <h3 id="technic_head">Presupuesto</h3>
+        <h3
+          id="technic_text"
+          data-target="10"
+          data-suffix="M USD"
+          class="counter"
+        >
+          10M USD
+        </h3>
+        <h3
+          id="technic_text"
+          data-target="84"
+          data-suffix="M USD (2024)"
+          class="counter"
+          style="font-weight: bold;"
+        >
+          84M USD (2024)
+        </h3>
+      </div>
+
+      <div>
+        <h3 id="technic_head">Recaudación</h3>
+        <h3
+          id="technic_text"
+          data-target="146"
+          data-suffix="M USD"
+          class="counter"
+        >
+          146M USD
+        </h3>
+        <h3
+          id="technic_text"
+          data-target="1168"
+          data-suffix="M USD (2024)"
+          class="counter"
+          style="font-weight: bold;"
+        >
+          1168M USD (2024)
+        </h3>
+      </div>
+    </div>
+  </section>
+  
+  <section class="seventh_section">
+    <h1 style="color: aliceblue; font-size: 300px; margin: 0">GRACIAS!</h1>
+    <div class="icon_links">
+      <a href="" class="social_icon">
+          <img src="/images/figma-icon.svg" alt="figma-icon">
+      </a>
+
+      <a href="https://github.com/MarianoSanson/ROCKET_VIS" class="social_icon" target="_blank">
+        <img src="/images/github-icon.svg" alt="github-icon">
+      </a>
+    </div>
+    <h3 style="color: aliceblue;">Mariano Sanson y Nicolas Wolodarsky</h3>
+    <h3 style="color: aliceblue;">Universidad Torcuato Di Tella | Licenciatura en Tecnología Digital</h3>
+  </section>
 </main>
 
 <style>
@@ -246,6 +341,10 @@
   :global(html, body) {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     margin: 0;
+  }
+
+  audio {
+    display: none;
   }
 
   * {
@@ -284,17 +383,17 @@
 
   .moon {
     z-index: 3;
-    animation: moonTransition 5s forwards;
+    animation: moonTransition 16s forwards;
   }
 
   .earth {
     z-index: 2;
-    animation: earthTransition 5s forwards;
+    animation: earthTransition 16s forwards;
   }
 
   .sun {
     z-index: 1;
-    animation: sunTransition 5s forwards;
+    animation: sunTransition 16s forwards;
   }
 
   @keyframes sunTransition {
@@ -336,7 +435,7 @@
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: 0.15em; /* Adjust as needed */
     animation:
-      typing 4s steps(40, end),
+      typing 7.5s steps(40, end),
       blink-caret 0.75s step-end infinite;
   }
 
@@ -383,7 +482,7 @@
     height: 80vh;
   }
 
-  .third_section{
+  .third_section {
     padding-top: 50px;
     margin: 50px;
   }
@@ -451,35 +550,66 @@
     transform: scale(0.9, 0.9);
   }
 
-  .fourth_section{
+  .fourth_section {
     padding-top: 30px;
     margin: 50px;
   }
 
-
-  .fifth_section{
+  .fifth_section {
     padding-top: 30px;
     margin: 50px;
   }
 
-
-
-  .sixth_section{
+  .sixth_section {
     padding-top: 30px;
     margin: 50px;
   }
 
-  #technic_text{
-    font-size: 3em;
-    color: aliceblue;
-    font-weight: bold;
-    margin: 10px;
+  .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding-bottom: 100px;
   }
 
-  .counter {
-    font-size: 3em;
-    font-weight: bold;
-    color: aliceblue; /* Cambia el color como desees */
+  .technic_container {
+      display: flex;
+      flex-direction: column;
+      justify-items: left;
+  }
+
+  #technic_head {
+      font-size: 1.5em;
+      color: aliceblue;
+      margin: 10px;
+      font-weight: 500;
+  }
+
+  #technic_text {
+      font-size: 2.5em;
+      color: aliceblue;
+      margin: 10px;
+      font-weight: 500;
+  }
+
+  .seventh_section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icon_links{
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+  }
+
+  .social_icon{
+    transition: 0.5s;
+  }
+
+  a:hover{
+    transform: translateY(-10px);
   }
 
   #stars {
