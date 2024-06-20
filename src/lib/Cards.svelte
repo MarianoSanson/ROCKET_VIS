@@ -40,4 +40,3 @@
         <div class="card" style="background-color: {color}; background-image: url({hoverImage})"></div>
     {/each}
 </div>
-  
