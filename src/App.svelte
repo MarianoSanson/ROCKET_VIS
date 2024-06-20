@@ -61,14 +61,42 @@
   });
 
   const colorIntro = '#8FFF9A';
+  const colorAccionCreciente = '#FF7B5E';
+  const colorClimax = '#CF1E1E';
+  const colorDecreciente= '#FFFBA3';
+  const colorResolucion = '#7EFFFF';
 
   const cardsData = [
-    { color: colorIntro,hoverImage: '/images/narrative/imagen-piola.png' },
-    { color: '#8FFF9A', hoverImage: '/images/narrative/imagen-piola.png' },
-    { color: '#FF7B5E', hoverImage: '/images/narrative/imagen-piola.png' },
-    { color: '#CF1E1E', hoverImage: '/images/narrative/imagen-piola.png' },
-    { color: '#FFFBA3', hoverImage: '/images/narrative/imagen-piola.png' },
-    { color: '#8FFF9A', hoverImage: '/images/narrative/imagen-piola.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative2.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative3.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative4.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative5.png' },
+    { color: colorDecreciente, hoverImage: '/images/narrative/narrative6.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative7.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative8.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative13.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative15.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative16.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative19.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative21.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative24.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative29.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative32.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative34.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative35.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative37.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative48.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative43.png' },
+    { color: colorDecreciente, hoverImage: '/images/narrative/narrative45.png' },
+    { color: colorDecreciente, hoverImage: '/images/narrative/narrative49.png' },
+    { color: colorResolucion, hoverImage: '/images/narrative/narrative53.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative57.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative58.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative59.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative67.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative69.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative83.png' },
+    { color: colorResolucion, hoverImage: '/images/narrative/narrative89.png' },
   ];
 </script>
 
