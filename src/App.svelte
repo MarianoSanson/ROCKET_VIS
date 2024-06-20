@@ -66,7 +66,40 @@
   const colorDecreciente= '#FFFBA3';
   const colorResolucion = '#7EFFFF';
 
-  const cardsData = [
+  const cardsDataNarrative = [
+    { color: colorIntro, hoverImage: '/images/narrative/narrative2.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative3.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative4.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative5.png' },
+    { color: colorDecreciente, hoverImage: '/images/narrative/narrative6.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative7.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative8.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative13.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative15.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative16.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative19.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative21.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative24.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative29.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative32.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative34.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative35.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative37.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative48.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative43.png' },
+    { color: colorDecreciente, hoverImage: '/images/narrative/narrative45.png' },
+    { color: colorDecreciente, hoverImage: '/images/narrative/narrative49.png' },
+    { color: colorResolucion, hoverImage: '/images/narrative/narrative53.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative57.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative58.png' },
+    { color: colorIntro, hoverImage: '/images/narrative/narrative59.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative67.png' },
+    { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative69.png' },
+    { color: colorClimax, hoverImage: '/images/narrative/narrative83.png' },
+    { color: colorResolucion, hoverImage: '/images/narrative/narrative89.png' },
+  ];
+
+  const cardsDataColor = [
     { color: colorIntro, hoverImage: '/images/narrative/narrative2.png' },
     { color: colorIntro, hoverImage: '/images/narrative/narrative3.png' },
     { color: colorAccionCreciente, hoverImage: '/images/narrative/narrative4.png' },
@@ -172,7 +205,7 @@
       </div>
     </div>
     <div class="narrative_analysis">
-      <Cards cards={cardsData}/>
+      <Cards cards={cardsDataNarrative}/>
     </div>
   </section>
 
@@ -206,38 +239,7 @@
       </div>
     </div>
     <div class="narrative_analysis">
-      <div class="cards">
-        <div class="card" style="background-color: #F18200;"></div>
-        <div class="card neutro" style="background-color: #CECECE;"></div>
-        <div class="card desarrollo" style="background-color: #A97C48;"></div>
-        <div class="card tension" style="background-color: #A97C48;"></div>
-        <div class="card neutro" style="background-color: #A97C48;"></div>
-        <div class="card desarrollo" style="background-color: #CECECE;"></div>
-        <div class="card tension" style="background-color: #9DF3FF;"></div>
-        <div class="card neutro" style="background-color: #F18200;"></div>
-        <div class="card desarrollo" style="background-color: #CECECE;"></div>
-        <div class="card tension" style="background-color: #9DF3FF;"></div>
-        <div class="card neutro" style="background-color: #F18200;"></div>
-        <div class="card desarrollo" style="background-color: #CECECE;"></div>
-        <div class="card tension" style="background-color: #CECECE;"></div>
-        <div class="card tension" style="background-color: #CECECE;"></div>
-        <div class="card neutro" style="background-color: #CECECE;"></div>
-        <div class="card tension" style="background-color: #CECECE;"></div>
-        <div class="card tension" style="background-color: #F18200;"></div>
-        <div class="card neutro" style="background-color: #F18200;"></div>
-        <div class="card tension" style="background-color: #9DF3FF;"></div>
-        <div class="card tension" style="background-color: #CECECE;"></div>
-        <div class="card neutro" style="background-color: #F18200;"></div>
-        <div class="card tension" style="background-color: #F18200;"></div>
-        <div class="card tension" style="background-color: #F18200;"></div>
-        <div class="card neutro" style="background-color: #CECECE;"></div>
-        <div class="card tension" style="background-color: #F18200;"></div>
-        <div class="card tension" style="background-color: #F18200;"></div>
-        <div class="card tension" style="background-color: #9DF3FF;"></div>
-        <div class="card neutro" style="background-color: #9DF3FF;"></div>
-        <div class="card tension" style="background-color: #9DF3FF;"></div>
-        <div class="card tension" style="background-color: #CECECE;"></div>
-      </div>
+      <Cards cards={cardsDataColor}/>
     </div>
   </section>
 
