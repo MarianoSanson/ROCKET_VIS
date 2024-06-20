@@ -1,8 +1,9 @@
 <script>
-  
+
   import { onMount } from "svelte";
-  
+
   import Stars from "./lib/Stars.svelte";
+  import Cards from "./lib/Cards.svelte";
 
   let audio; // Definir la variable de audio
 
@@ -58,6 +59,17 @@
       observer.observe(element);
     });
   });
+
+
+  const cardsData = [
+    { color: '#8FFF9A', hoverImage: '/images/image1.png' },
+    { color: '#8FFF9A', hoverImage: '/images/image2.png' },
+    { color: '#FF7B5E', hoverImage: '/images/image3.png' },
+    { color: '#CF1E1E', hoverImage: '/images/image4.png' },
+    { color: '#FFFBA3', hoverImage: '/images/image5.png' },
+    { color: '#8FFF9A', hoverImage: '/images/image6.png' },
+    // Add more cards as needed
+  ];
 </script>
 
 
@@ -132,42 +144,12 @@
       </div>
     </div>
     <div class="narrative_analysis">
-      <div class="cards">
-        <div class="card" style="background-color: #8FFF9A;"></div>
-        <div class="card neutro" style="background-color: #8FFF9A;"></div>
-        <div class="card desarrollo" style="background-color: #FF7B5E;"></div>
-        <div class="card tension" style="background-color: #CF1E1E;"></div>
-        <div class="card neutro" style="background-color: #FFFBA3;"></div>
-        <div class="card desarrollo" style="background-color: #8FFF9A;"></div>
-        <div class="card tension" style="background-color: #8FFF9A;"></div>
-        <div class="card neutro" style="background-color: #8FFF9A;"></div>
-        <div class="card desarrollo" style="background-color: #FF7B5E;"></div>
-        <div class="card tension" style="background-color: #FF7B5E;"></div>
-        <div class="card neutro" style="background-color: #CF1E1E;"></div>
-        <div class="card desarrollo" style="background-color: #8FFF9A;"></div>
-        <div class="card tension" style="background-color: #8FFF9A;"></div>
-        <div class="card tension" style="background-color: #8FFF9A;"></div>
-        <div class="card neutro" style="background-color: #8FFF9A;"></div>
-        <div class="card tension" style="background-color: #8FFF9A;"></div>
-        <div class="card tension" style="background-color: #FF7B5E;"></div>
-        <div class="card neutro" style="background-color: #FF7B5E;"></div>
-        <div class="card tension" style="background-color: #CF1E1E;"></div>
-        <div class="card tension" style="background-color: #CF1E1E;"></div>
-        <div class="card neutro" style="background-color: #FFFBA3;"></div>
-        <div class="card tension" style="background-color: #FFFBA3;"></div>
-        <div class="card tension" style="background-color: #7EFFFF;"></div>
-        <div class="card neutro" style="background-color: #8FFF9A;"></div>
-        <div class="card tension" style="background-color: #8FFF9A;"></div>
-        <div class="card tension" style="background-color: #8FFF9A;"></div>
-        <div class="card tension" style="background-color: #FF7B5E;"></div>
-        <div class="card neutro" style="background-color: #FF7B5E;"></div>
-        <div class="card tension" style="background-color: #CF1E1E;"></div>
-        <div class="card tension" style="background-color: #7EFFFF;"></div>
-      </div>
+      <Cards cards={cardsData}/>
     </div>
   </section>
 
   <section class="fourth_section">
+    <Stars />
     <h1 id="section_header">COLOR</h1>
     <p style="color: aliceblue; font-size:21px; text-align:center">
       Nos propusimos analizar cómo el uso del color en las escenas de la
@@ -521,7 +503,7 @@
     justify-content: center;
   }
 
-  .cards {
+  /* .cards {
     height: fit-content;
     display: flex;
     margin-top: 100px;
@@ -549,7 +531,7 @@
   .cards:hover > .card:not(:hover) {
     filter: blur(10px);
     transform: scale(0.9, 0.9);
-  }
+  } */
 
   .fourth_section {
     padding-top: 30px;
