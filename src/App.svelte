@@ -219,7 +219,7 @@
       esto llegamos a la siguiente clasificacion:
     </p>
     <div class="narratives_container">
-      <div class="narrative">npm install
+      <div class="narrative">
 
         <div class="category" style="background-color: #F18200;"></div>
         <h4>Cálido Saturado</h4>
