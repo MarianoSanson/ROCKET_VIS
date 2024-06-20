@@ -60,15 +60,15 @@
     });
   });
 
+  const colorIntro = '#8FFF9A';
 
   const cardsData = [
-    { color: '#8FFF9A', hoverImage: '/images/image1.png' },
-    { color: '#8FFF9A', hoverImage: '/images/image2.png' },
-    { color: '#FF7B5E', hoverImage: '/images/image3.png' },
-    { color: '#CF1E1E', hoverImage: '/images/image4.png' },
-    { color: '#FFFBA3', hoverImage: '/images/image5.png' },
-    { color: '#8FFF9A', hoverImage: '/images/image6.png' },
-    // Add more cards as needed
+    { color: colorIntro,hoverImage: '/images/narrative/imagen-piola.png' },
+    { color: '#8FFF9A', hoverImage: '/images/narrative/imagen-piola.png' },
+    { color: '#FF7B5E', hoverImage: '/images/narrative/imagen-piola.png' },
+    { color: '#CF1E1E', hoverImage: '/images/narrative/imagen-piola.png' },
+    { color: '#FFFBA3', hoverImage: '/images/narrative/imagen-piola.png' },
+    { color: '#8FFF9A', hoverImage: '/images/narrative/imagen-piola.png' },
   ];
 </script>
 
