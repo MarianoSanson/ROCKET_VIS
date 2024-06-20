@@ -2,6 +2,7 @@
 
   import { onMount } from "svelte";
 
+
   import Stars from "./lib/Stars.svelte";
   import Cards from "./lib/Cards.svelte";
 
@@ -175,8 +176,8 @@
   <section class="third_section">
     <h1 id="section_header">ANÁLISIS NARRATIVO</h1>
     <p style="color: aliceblue; font-size:21px; text-align:center">
-      Dividimos la narrativa de la pelicula en cinco categorias diferentes y,
-      además, decidimos asignarle a cada frame una duración de 5 minutos
+      Para el analisis narrativo de la pelicula, decidimos particionarla en segmentod de
+      5 minutos, y a cada segmento asignarle un momento en el arco narrativo:
     </p>
     <div class="narratives_container">
       <div class="narrative">
@@ -218,7 +219,8 @@
       esto llegamos a la siguiente clasificacion:
     </p>
     <div class="narratives_container">
-      <div class="narrative">
+      <div class="narrative">npm install
+
         <div class="category" style="background-color: #F18200;"></div>
         <h4>Cálido Saturado</h4>
       </div>

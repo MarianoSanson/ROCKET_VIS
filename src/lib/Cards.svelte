@@ -8,6 +8,7 @@ export let cards = [];
     display: flex;
     margin-top: 100px;
     gap: 5px;
+    z-index: 10;
 }
 
 .cards .card {
@@ -23,7 +24,7 @@ export let cards = [];
     transition: 400ms;
     background-size: cover;
     background-position: center;
-    border: 2px solid transparent;
+    border: 2px solid;
 }
 
 .cards .card:hover {
@@ -54,4 +55,3 @@ export let cards = [];
     </div>
 {/each}
 </div>
-  
