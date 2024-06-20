@@ -19,7 +19,7 @@ export let cards = [];
     height: 150px;
     width: 30px;
     border-radius: 10px;
-    color: white;
+    color: white solid;
     transition: 400ms;
     background-size: cover;
     background-position: center;
