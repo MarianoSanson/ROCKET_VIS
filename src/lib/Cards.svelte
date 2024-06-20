@@ -23,6 +23,7 @@ export let cards = [];
     transition: 400ms;
     background-size: cover;
     background-position: center;
+    border: 2px solid transparent;
 }
 
 .cards .card:hover {
@@ -47,8 +48,8 @@ export let cards = [];
 </style>
 
 <div class="cards">
-{#each cards as { color, hoverImage }}
-    <div class="card" style="background-color: {color}">
+{#each cards as { color, hoverImage, stroke }}
+    <div class="card" style="background-color: {color}; border-color: {stroke}">
     <img src={hoverImage} alt="hover image" />
     </div>
 {/each}
