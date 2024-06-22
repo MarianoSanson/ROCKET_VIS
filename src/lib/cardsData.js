@@ -5,7 +5,7 @@ const colorDecreciente= '#FFFBA3';
 const colorResolucion = '#7EFFFF';
 
 
-const cardsDataNarrative = [
+export const cardsDataNarrative = [
     { color: colorIntro, stroke:colorIntro, hoverImage: '/images/narrative/narrative2.png' },
     { color: colorIntro, stroke:colorIntro, hoverImage: '/images/narrative/narrative3.png' },
     { color: colorAccionCreciente, stroke:colorAccionCreciente, hoverImage: '/images/narrative/narrative4.png' },
@@ -38,7 +38,7 @@ const cardsDataNarrative = [
     { color: colorResolucion, stroke:colorResolucion, hoverImage: '/images/narrative/narrative89.png' },
   ];
 
-  const cardsDataColor = [
+export const cardsDataColor = [
     { color: '#3A3328', stroke:'#EAE2DC', hoverImage: '/images/narrative/narrative2.png' },
     { color: '#81624F', stroke:'#040807', hoverImage: '/images/narrative/narrative3.png' },
     { color: '#E6D6C0', stroke:'#C5B97B', hoverImage: '/images/narrative/narrative4.png' },
