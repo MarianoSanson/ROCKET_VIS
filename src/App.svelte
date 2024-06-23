@@ -7,6 +7,8 @@
   import Scroll from "./lib/Scroll.svelte";
   import Bar from "./lib/Bar.svelte";
 
+  import {cardsDataColor,cardsDataNarrative} from "./lib/cardsData.js"
+
   let audio; // Definir la variable de audio
 
   const startCounter = (element, target, suffix) => {
@@ -62,7 +64,7 @@
     });
   });
 
-  import {cardsDataColor,cardsDataNarrative} from "./lib/cardsData.js"
+  
 </script>
 
 
@@ -173,13 +175,15 @@
   </section>
 
   <section class="fifth_section">
-    <h1 id="section_header">DESCOMPOSICION DEL AUDIO</h1>
-    <p style="color: aliceblue; font-size:21px; text-align:center">
-      Nos propusimos analizar cómo el uso del color en las escenas de la
-      pelicula se relaciona con lo que estas buscan transmitir.<br />A raiz de
-      esto llegamos a la siguiente clasificacion:
-    </p>
-    <Bar />
+    <div class='stickyContainer'>
+      <h1 id="section_header">DESCOMPOSICION DEL AUDIO</h1>
+      <p style="color: aliceblue; font-size:21px; text-align:center">
+        Nos propusimos analizar cómo el uso del color en las escenas de la
+        pelicula se relaciona con lo que estas buscan transmitir.<br />A raiz de
+        esto llegamos a la siguiente clasificacion:
+      </p>
+      <Bar />
+    </div>
   </section>
 
   <div id="stars"></div>
@@ -475,8 +479,16 @@
   }
 
   .fifth_section {
+    height: 300vh;
     padding-top: 30px;
     margin: 50px;
+    position: relative;
+  }
+
+  .stickyContainer {
+    position: sticky;
+    top: 30px;
+    height: 100vh;
   }
 
   .sixth_section {
@@ -531,12 +543,5 @@
     transform: translateY(-10px);
   }
 
-  .waveformAnalisis{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20vh;
-  }
 
 </style>

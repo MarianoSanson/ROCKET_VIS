@@ -2,22 +2,29 @@
 import { onMount } from 'svelte';
 let bar;
 let container;
-let waveformimg
+let waveformimg;
 
-const updateBarPosition = () => {
-    const containerHeight = container.offsetHeight;
-    const scrollPosition = window.scrollY;
-    const maxScroll = containerHeight - window.innerHeight;
-    const scrollPercent = Math.min(scrollPosition / maxScroll, 1);
-    const barPosition = scrollPercent * waveformimg.offsetWidth;
+const startPosition = -7000; // Change to your desired start position
+const endPosition = 6000; // Change to your desired end position
 
-    bar.style.left = `${barPosition}px`;
-};
+    const handleScroll = () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercentage = (scrollTop / scrollHeight);
 
-onMount(() => {
-    window.addEventListener('scroll', updateBarPosition);
-    updateBarPosition(); // Initialize position
-});
+        // Calculate the bar's position based on start and end positions
+        const maxScrollRange = endPosition - startPosition;
+        const barPosition = startPosition + (scrollPercentage * maxScrollRange);
+
+        bar.style.left = `${barPosition}px`;
+    };
+    
+    onMount(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            };
+    });
 </script>
 
 <style>
@@ -41,7 +48,7 @@ onMount(() => {
 #bar {
     position: absolute;
     top: 0;
-    height: 100%;
+    height: 100vh;
     width: 2px;
     background-color: red;
     transition: left 0.1s ease-out;
