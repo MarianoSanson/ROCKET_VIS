@@ -3,6 +3,7 @@
         width: 1px;
         height: 1px;
         background: transparent;
+        z-index: 0;
         box-shadow:
         1602px 661px #fff,
         1779px 795px #fff,
@@ -713,6 +714,7 @@
         width: 1px;
         height: 1px;
         background: transparent;
+        z-index: 0;
         box-shadow:
         1602px 661px #fff,
         1779px 795px #fff,
@@ -1420,6 +1422,7 @@
         width: 2px;
         height: 2px;
         background: transparent;
+        z-index: 0;
         box-shadow:
         743px 879px #fff,
         1145px 1260px #fff,
@@ -1630,6 +1633,7 @@
         width: 2px;
         height: 2px;
         background: transparent;
+        z-index: 0;
         box-shadow:
         743px 879px #fff,
         1145px 1260px #fff,
@@ -1837,6 +1841,7 @@
         width: 3px;
         height: 3px;
         background: transparent;
+        z-index: 0;
         box-shadow:
         1703px 1208px #fff,
         381px 207px #fff,

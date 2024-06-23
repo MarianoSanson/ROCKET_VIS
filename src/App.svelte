@@ -4,8 +4,7 @@
 
   import Stars from "./lib/Stars.svelte";
   import Cards from "./lib/Cards.svelte";
-  import Scroll from "./lib/Scroll.svelte";
-  import Bar from "./lib/Bar.svelte";
+  import FifthSection from "./lib/FifthSection.svelte";
 
   import {cardsDataColor,cardsDataNarrative} from "./lib/cardsData.js"
 
@@ -173,22 +172,9 @@
       <Cards cards={cardsDataColor}/>
     </div>
   </section>
-
-  <section class="fifth_section">
-    <div class='stickyContainer'>
-      <h1 id="section_header">DESCOMPOSICION DEL AUDIO</h1>
-      <p style="color: aliceblue; font-size:21px; text-align:center">
-        Nos propusimos analizar cómo el uso del color en las escenas de la
-        pelicula se relaciona con lo que estas buscan transmitir.<br />A raiz de
-        esto llegamos a la siguiente clasificacion:
-      </p>
-      <Bar />
-    </div>
-  </section>
-
-  <div id="stars"></div>
-  <div id="stars2"></div>
-  <div id="stars3"></div>
+  <Stars />
+  <FifthSection />
+  <Stars />
 
   <section class="sixth_section">
     <h1 id="section_header">FICHA TECNICA</h1>
@@ -265,7 +251,6 @@
       </div>
     </div>
   </section>
-  <Scroll />
 
   <section class="seventh_section">
     <h1 style="color: aliceblue; font-size: 300px; margin: 0">GRACIAS!</h1>
@@ -476,19 +461,6 @@
   .fourth_section {
     padding-top: 30px;
     margin: 50px;
-  }
-
-  .fifth_section {
-    height: 300vh;
-    padding-top: 30px;
-    margin: 50px;
-    position: relative;
-  }
-
-  .stickyContainer {
-    position: sticky;
-    top: 30px;
-    height: 100vh;
   }
 
   .sixth_section {
