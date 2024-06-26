@@ -11,7 +11,7 @@
   let audio; // Definir la variable de audio
 
   const startCounter = (element, target, suffix) => {
-    const duration = 3500; // 3.5 segundos
+    const duration = 2000; // 2 segundos
     let counter = 0;
     const startTime = Date.now();
 
@@ -253,7 +253,8 @@
   </section>
 
   <section class="seventh_section">
-    <h1 style="color: aliceblue; font-size: 300px; margin: 0">GRACIAS!</h1>
+    <img src="public\images\discovery-one.png" alt="nave discovery one" style="z-index: 10;">
+    <!-- <h1 style="color: aliceblue; font-size: 300px; margin: 0">GRACIAS!</h1> -->
     <div class="icon_links">
       <a href="" class="social_icon">
           <img src="/images/figma-icon.svg" alt="figma-icon">
@@ -271,7 +272,7 @@
 <style>
   @font-face {
     font-family: "Futura";
-    src: url("public\images\fonts\Futura Medium.ttf") format("truetype");
+    src: url("/images/fonts/Futura Medium.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
   }
@@ -279,10 +280,6 @@
   :global(html, body) {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     margin: 0;
-  }
-
-  audio {
-    display: none;
   }
 
   * {
