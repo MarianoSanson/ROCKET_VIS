@@ -271,8 +271,8 @@
         <img src="/images/github-icon.svg" alt="github-icon" />
       </a>
     </div>
-    <h3 style="color: aliceblue;">Mariano Sanson y Nicolas Wolodarsky</h3>
-    <h3 style="color: aliceblue;">
+    <h3 style="color: aliceblue; font-size:24px; font-weight:400;">Mariano Sanson y Nicolas Wolodarsky</h3>
+    <h3 style="color: aliceblue; font-size:24px; font-weight:400;">
       Universidad Torcuato Di Tella | Licenciatura en Tecnología Digital
     </h3>
   </section>
