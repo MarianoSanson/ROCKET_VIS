@@ -1,14 +1,27 @@
-<script>
-
+<script lang="ts">
   import { onMount } from "svelte";
 
   import Stars from "./lib/Stars.svelte";
   import Cards from "./lib/Cards.svelte";
   import FifthSection from "./lib/FifthSection.svelte";
 
-  import {cardsDataColor,cardsDataNarrative} from "./lib/cardsData.js"
+  import { cardsDataColor, cardsDataNarrative } from "./lib/cardsData.js";
+  import { fade } from 'svelte/transition';
 
   let audio; // Definir la variable de audio
+
+  let scrollContainer;
+
+  let showPresupuestoActual = false;
+  let showRecaudacionActual = false;
+
+  function handlePresupuestoClick() {
+    showPresupuestoActual = true;
+  }
+
+  function handleRecaudacionClick() {
+    showRecaudacionActual = true;
+  }
 
   const startCounter = (element, target, suffix) => {
     const duration = 2000; // 2 segundos
@@ -52,6 +65,13 @@
       audio.play().catch((error) => {
         console.log("Error al reproducir el audio:", error);
       });
+
+      scrollContainer.addEventListener("wheel", (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          scrollContainer.scrollLeft += e.deltaY * 5; // Aumenta el multiplicador para más movimiento
+        }
+      });
     }
 
     // Observar los elementos que requieren contador
@@ -62,10 +82,7 @@
       observer.observe(element);
     });
   });
-
-  
 </script>
-
 
 <main>
   <Stars />
@@ -85,7 +102,11 @@
 
   <section class="second_section">
     <div class="introduction">
-      <img src="/images/portada-2001.png" alt="portada pelicula" id="movie_image"/>
+      <img
+        src="/images/portada-2001.png"
+        alt="portada pelicula"
+        id="movie_image"
+      />
 
       <p id="summary">
         "2001: Una odisea del espacio" es una película de ciencia ficción de
@@ -104,8 +125,9 @@
   <section class="third_section">
     <h1 id="section_header">ANÁLISIS NARRATIVO</h1>
     <p style="color: aliceblue; font-size:21px; text-align:center">
-      Para el analisis narrativo de la pelicula, decidimos particionarla en segmentod de
-      5 minutos, y a cada segmento asignarle un momento en el arco narrativo:
+      Para el analisis narrativo de la pelicula, decidimos particionarla en
+      segmentod de 5 minutos, y a cada segmento asignarle un momento en el arco
+      narrativo:
     </p>
     <div class="narratives_container">
       <div class="narrative">
@@ -134,7 +156,7 @@
       </div>
     </div>
     <div class="narrative_analysis">
-      <Cards cards={cardsDataNarrative}/>
+      <Cards cards={cardsDataNarrative} />
     </div>
   </section>
 
@@ -148,7 +170,6 @@
     </p>
     <div class="narratives_container">
       <div class="narrative">
-
         <div class="category" style="background-color: #F18200;"></div>
         <h4>Cálido Saturado</h4>
       </div>
@@ -169,7 +190,7 @@
       </div>
     </div>
     <div class="narrative_analysis">
-      <Cards cards={cardsDataColor}/>
+      <Cards cards={cardsDataColor} />
     </div>
   </section>
   <Stars />
@@ -178,96 +199,91 @@
 
   <section class="sixth_section">
     <h1 id="section_header">FICHA TECNICA</h1>
-    <div class="row">
-      <div class="technic_container">
-        <h3 id="technic_head">Dirigida por</h3>
-        <h3 id="technic_text">Stanley Kubrick</h3>
+    <div bind:this={scrollContainer} class="scroll-container" style="color: aliceblue;">
+      <div class="Director">
+        <h1 class="technic_head" style="font-size: 80px; font-weight:400; margin:0;">Dirigida Por</h1>
+        <div class="row" style="gap: 0;">
+          <h3 style="font-size: 120px; margin:80px">Stanley Kubrick</h3>
+          <img src="/images/stanley-kubrick.png" alt="Stanley Kubrick" />
+        </div>
       </div>
 
-      <div>
-        <h3 id="technic_head">Género</h3>
-        <h3 id="technic_text">Ciencia Ficción</h3>
+      <div class="Genero">
+        <h1 style="font-size: 80px; font-weight:400; margin:0;">Género</h1>
+        <h3 style="font-size: 120px; margin:80px">Ciencia Ficción</h3>
+        <div class="row" style="gap: 20px;">
+          <img src="/images/backshot-1.png" alt="backshot-1">
+          <img src="/images/backshot-2.png" alt="backshot-2">
+        </div>
       </div>
 
-      <div>
-        <h3 id="technic_head">Duración</h3>
-        <h3
-          id="technic_text"
-          data-target="142"
-          data-suffix=" minutos"
-          class="counter"
-        >
-          142 minutos
-        </h3>
-      </div>
-    </div>
+      <div class="Duracion-Año">
+        <div class="row" style="gap: 70px;">
+          <h1 style="font-size: 80px; font-weight:400; margin:0;">Año de lanzamiento</h1>
+          <h1 style="font-size: 80px; font-weight:400; margin:0;">Duración</h1>
+        </div>
 
-    <div class="row">
-      <div>
-        <h3 id="technic_head">Año de lanzamiento</h3>
-        <h3 id="technic_text" data-target="1968">1968</h3>
+        <div class="row" style="gap: 10px;">
+          <h3 style="font-size: 120px; margin:50px" data-target="1968" class="counter">1968</h3>
+          <h3 style="font-size: 120px; margin:50px"  data-target="142" data-suffix=" minutos" class="counter">142 minutos</h3>
+        </div>
       </div>
 
-      <div>
-        <h3 id="technic_head">Presupuesto</h3>
-        <h3
-          id="technic_text"
-          data-target="10"
-          data-suffix="M USD"
-          class="counter"
-        >
-          10M USD
-        </h3>
-        <h3
-          id="technic_text"
-          data-target="84"
-          data-suffix="M USD (2024)"
-          class="counter"
-          style="font-weight: bold;"
-        >
-          84M USD (2024)
-        </h3>
+      <div class="Presupuesto">
+        <h1 style="font-size: 80px; font-weight:400; margin:0;">Presupuesto</h1>
+        <div class="row" style="align-items: center; height: fit-content; margin-top: 50px; gap: 50px;">
+          <button class="money-button" on:click={handlePresupuestoClick} on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && handlePresupuestoClick()} aria-label="Show Presupuesto Actual">
+            <img src="/images/money-svg.svg" alt="money-svg">
+          </button>
+          <h3 style="font-size: 120px; margin: 0;" data-target="10" data-suffix="M USD" class="counter">10 M USD</h3>
+          {#if showPresupuestoActual}
+            <h3 id="presupuesto_actual" data-target="84" data-suffix="M USD (2024)" class="counter" transition:fade>84 M USD (2024)</h3>
+          {/if}
+        </div>
       </div>
-
-      <div>
-        <h3 id="technic_head">Recaudación</h3>
-        <h3
-          id="technic_text"
-          data-target="146"
-          data-suffix="M USD"
-          class="counter"
-        >
-          146M USD
-        </h3>
-        <h3
-          id="technic_text"
-          data-target="1168"
-          data-suffix="M USD (2024)"
-          class="counter"
-          style="font-weight: bold;"
-        >
-          1168M USD (2024)
-        </h3>
+      
+      <div class="Recaudacion">
+        <h1 style="font-size: 80px; font-weight:400; margin:0;">Recaudación</h1>
+        <div class="row" style="align-items: center; height: fit-content; margin-top: 50px; gap: 50px;">
+          <button class="money-button-2" on:click={handleRecaudacionClick} on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && handleRecaudacionClick()} aria-label="Show Recaudacion Actual">
+            <img src="/images/money-svg.svg" alt="money-svg">
+          </button>
+          <h3 style="font-size: 120px; margin: 0;" data-target="146" data-suffix="M USD" class="counter">146 M USD</h3>
+          {#if showRecaudacionActual}
+            <h3 id="recaudacion_actual" data-target="1168" data-suffix="M USD (2024)" class="counter" transition:fade>1168 M USD (2024)</h3>
+          {/if}
+        </div>
       </div>
     </div>
   </section>
 
   <section class="seventh_section">
-    <img src="public\images\discovery-one.png" alt="nave discovery one" style="z-index: 10;">
-    <!-- <h1 style="color: aliceblue; font-size: 300px; margin: 0">GRACIAS!</h1> -->
+    <img
+      src="/images/discovery-one.png"
+      alt="nave discovery one"
+      style="z-index: 10;"
+    />
     <div class="icon_links">
-      <a href="" class="social_icon">
-          <img src="/images/figma-icon.svg" alt="figma-icon">
+      <a href="https://github.com/MarianoSanson/ROCKET_VIS" class="social_icon">
+        <!-- cambiar LINK -->
+        <img src="/images/figma-icon.svg" alt="figma-icon" />
       </a>
 
-      <a href="https://github.com/MarianoSanson/ROCKET_VIS" class="social_icon" target="_blank">
-        <img src="/images/github-icon.svg" alt="github-icon">
+      <a
+        href="https://github.com/MarianoSanson/ROCKET_VIS"
+        class="social_icon"
+        target="_blank"
+      >
+        <img src="/images/github-icon.svg" alt="github-icon" />
       </a>
     </div>
     <h3 style="color: aliceblue;">Mariano Sanson y Nicolas Wolodarsky</h3>
-    <h3 style="color: aliceblue;">Universidad Torcuato Di Tella | Licenciatura en Tecnología Digital</h3>
+    <h3 style="color: aliceblue;">
+      Universidad Torcuato Di Tella | Licenciatura en Tecnología Digital
+    </h3>
   </section>
 </main>
+|
 
 <style>
   @font-face {
@@ -409,8 +425,8 @@
     font-size: 27.7px;
     text-align: left;
     margin: 0;
-    height: 583.675px;
-    width: 394.062px;
+    height: 80vh;
+    width: 21vw;
   }
 
   #movie_image {
@@ -465,52 +481,112 @@
     margin: 50px;
   }
 
-  .row {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      padding-bottom: 100px;
+  .sixth_section {
+    height: 100vh;
   }
 
-  .technic_container {
-      display: flex;
-      flex-direction: column;
-      justify-items: left;
+  .Director {
+    color: aliceblue;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    margin-top: 5%;
   }
 
-  #technic_head {
-      font-size: 1.5em;
-      color: aliceblue;
-      margin: 10px;
-      font-weight: 500;
-  }
-
-  #technic_text {
-      font-size: 2.5em;
-      color: aliceblue;
-      margin: 10px;
-      font-weight: 500;
-  }
-
-  .seventh_section{
+  .Genero {
+    min-width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .icon_links{
+  .Duracion-Año{
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
+
+  .Presupuesto{
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
+
+  .money-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    height: fit-content;
+  }
+
+  #presupuesto_actual{
+    font-size: 120px;
+    margin:0;
+    color: #8FFF9A;
+    transition: opacity 0.5s ease-in-out; /* Transición suave */
+  }
+
+  .Recaudacion{
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+  }
+
+  .money-button-2 {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    height: fit-content;
+  }
+
+  #recaudacion_actual{
+    font-size: 120px;
+    margin:0;
+    color: #8FFF9A;
+    transition: opacity 0.5s ease-in-out; /* Transición suave */
+  }
+
+  .scroll-container {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .seventh_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icon_links {
     display: flex;
     flex-direction: row;
     padding: 25px;
   }
 
-  .social_icon{
+  .social_icon {
     transition: 0.5s;
   }
 
-  a:hover{
+  a:hover {
     transform: translateY(-10px);
   }
-
-
 </style>
