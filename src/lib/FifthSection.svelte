@@ -80,7 +80,7 @@ onMount(() => {
     top: 0;
     height: 20vh;
     width: 2px;
-    background-color: red;
+    background-color: orange;
     transition: left 0.1s ease-out;
     z-index: 1;
 }
@@ -112,7 +112,7 @@ onMount(() => {
 <section class="fifth_section" bind:this={waveformSection}>
 <div class="stickyContainer">
     <h1 id="section_header">DESCOMPOSICION DEL AUDIO</h1>
-    <p style="color: aliceblue; font-size: 21px; text-align: center;">
+    <p style="color: aliceblue; font-size: 22px; text-align: center;">
     Nos propusimos analizar cómo el uso del color en las escenas de la
     pelicula se relaciona con lo que estas buscan transmitir.<br />A raiz de
     esto llegamos a la siguiente clasificacion:

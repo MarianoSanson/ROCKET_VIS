@@ -123,36 +123,36 @@
   </section>
 
   <section class="third_section">
-    <h1 id="section_header">ANÁLISIS NARRATIVO</h1>
-    <p style="color: aliceblue; font-size:21px; text-align:center">
+    <h1 id="section_header">LA NARRACIÓN DE UNA ODISEA ESPACIAL</h1>
+    <p style="color: aliceblue; font-size:22px; text-align:center">
       Para el analisis narrativo de la pelicula, decidimos particionarla en
-      segmentod de 5 minutos, y a cada segmento asignarle un momento en el arco
+      segmentos de 5 minutos, y a cada segmento asignarle un momento en el arco
       narrativo:
     </p>
     <div class="narratives_container">
       <div class="narrative">
         <div class="category" style="background-color: #8FFF9A;"></div>
-        <h4>Introducción</h4>
+        <h4 style="font-size: 22px; font-weight:400">Introducción</h4>
       </div>
 
       <div class="narrative">
         <div class="category" style="background-color: #FF7B5E;"></div>
-        <h4>Acción Creciente</h4>
+        <h4 style="font-size: 22px; font-weight:400">Acción Creciente</h4>
       </div>
 
       <div class="narrative">
         <div class="category" style="background-color: #CF1E1E;"></div>
-        <h4>Climax</h4>
+        <h4 style="font-size: 22px; font-weight:400">Climax</h4>
       </div>
 
       <div class="narrative">
         <div class="category" style="background-color: #FFFBA3;"></div>
-        <h4>Acción Decreciente</h4>
+        <h4 style="font-size: 22px; font-weight:400">Acción Decreciente</h4>
       </div>
 
       <div class="narrative">
         <div class="category" style="background-color: #7EFFFF;"></div>
-        <h4>Resolución</h4>
+        <h4 style="font-size: 22px; font-weight:400">Resolución</h4>
       </div>
     </div>
     <div class="narrative_analysis">
@@ -162,31 +162,23 @@
 
   <section class="fourth_section">
     <Stars />
-    <h1 id="section_header">COLOR</h1>
-    <p style="color: aliceblue; font-size:21px; text-align:center">
-      Nos propusimos analizar cómo el uso del color en las escenas de la
-      pelicula se relaciona con lo que estas buscan transmitir.<br />A raiz de
-      esto llegamos a la siguiente clasificacion:
+    <h1 id="section_header">2001 A TRAVES DE LOS COLORES</h1>
+    <p style="color: aliceblue; font-size:22px; text-align:center">
+      Nos propusimos analizar el uso del color en las escenas de la
+      pelicula buscando chequear si hay alguna distribucion particular o no.
     </p>
     <div class="narratives_container">
+
+      <div id="example_card"></div>
+
       <div class="narrative">
-        <div class="category" style="background-color: #F18200;"></div>
-        <h4>Cálido Saturado</h4>
+        <div class="category" style="background-color:#CF1E1E; z-index:20"></div>
+        <h4 style="font-size: 22px; font-weight:400">Color principal</h4>
       </div>
 
       <div class="narrative">
-        <div class="category" style="background-color: #A97C48;"></div>
-        <h4>Cálido Desaturado</h4>
-      </div>
-
-      <div class="narrative">
-        <div class="category" style="background-color: #9DF3FF;"></div>
-        <h4>Frio Saturado</h4>
-      </div>
-
-      <div class="narrative">
-        <div class="category" style="background-color: #CECECE;"></div>
-        <h4>Frio Desaturado</h4>
+        <div class="category" style="background-color: #FFFBA3;"></div>
+        <h4 style="font-size: 22px; font-weight:400">Color de acento</h4>
       </div>
     </div>
     <div class="narrative_analysis">
@@ -218,14 +210,16 @@
       </div>
 
       <div class="Duracion-Año">
-        <div class="row" style="gap: 70px;">
-          <h1 style="font-size: 80px; font-weight:400; margin:0;">Año de lanzamiento</h1>
-          <h1 style="font-size: 80px; font-weight:400; margin:0;">Duración</h1>
-        </div>
+        <div class="row">
+          <div class="release_year">
+            <h1 style="font-size: 80px; font-weight:400; margin:0;">Año de lanzamiento</h1>
+            <h3 style="font-size: 120px; margin:50px" data-target="1968" class="counter">1968</h3>
+          </div>
 
-        <div class="row" style="gap: 10px;">
-          <h3 style="font-size: 120px; margin:50px" data-target="1968" class="counter">1968</h3>
-          <h3 style="font-size: 120px; margin:50px"  data-target="142" data-suffix=" minutos" class="counter">142 minutos</h3>
+          <div class="movie_length">
+            <h1 style="font-size: 80px; font-weight:400; margin:0;">Duración</h1>
+            <h3 style="font-size: 120px; margin:50px"  data-target="142" data-suffix=" minutos" class="counter">142 minutos</h3>
+          </div>
         </div>
       </div>
 
@@ -264,7 +258,7 @@
       style="z-index: 10;"
     />
     <div class="icon_links">
-      <a href="https://github.com/MarianoSanson/ROCKET_VIS" class="social_icon">
+      <a href="https://www.figma.com/proto/ZAGqFBeCUV9Vx9rn6HFtiu/PROYECTOS-WOLODARSKY-%7C-SANSON?node-id=827-4372&t=ZWfEgZFww2kAOlRp-1" class="social_icon" target="_blank">
         <!-- cambiar LINK -->
         <img src="/images/figma-icon.svg" alt="figma-icon" />
       </a>
@@ -449,7 +443,17 @@
     flex-direction: row;
     gap: 100px;
     justify-content: center;
+    align-items: center;
+    height: fit-content;
     margin-top: 80px;
+  }
+
+  #example_card{
+    height: 150px;
+    width: 30px;
+    border-radius: 10px;
+    background-color: #CF1E1E;
+    border: 2px #FFFBA3 solid;
   }
 
   .narrative {
@@ -508,6 +512,18 @@
     flex-direction: column;
     align-items: center;
     margin-top: 5%;
+  }
+
+  .release_year{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movie_length{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .Presupuesto{
