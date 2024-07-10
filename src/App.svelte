@@ -125,7 +125,7 @@
   <section class="third_section">
     <h1 id="section_header">LA NARRACIÓN DE UNA ODISEA ESPACIAL</h1>
     <p style="color: aliceblue; font-size:22px; text-align:center">
-      Para el analisis narrativo de la pelicula, decidimos particionarla en
+      Para el analisis narrativo, decidimos particionar la pelicula en
       segmentos de 5 minutos, y a cada segmento asignarle un momento en el arco
       narrativo:
     </p>
@@ -165,7 +165,7 @@
     <h1 id="section_header">2001 A TRAVES DE LOS COLORES</h1>
     <p style="color: aliceblue; font-size:22px; text-align:center">
       Nos propusimos analizar el uso del color en las escenas de la
-      pelicula buscando chequear si hay alguna distribucion particular o no.
+      pelicula para poder visualizar patrones en el uso del color.
     </p>
     <div class="narratives_container">
 

@@ -51,7 +51,7 @@ export let cards = [];
 <div class="cards">
 {#each cards as { color, hoverImage, stroke }}
     <div class="card" style="background-color: {color}; border-color: {stroke}">
-    <img src={hoverImage} alt="hover image" />
+    <img src={hoverImage} alt="hover images" />
     </div>
 {/each}
 </div>

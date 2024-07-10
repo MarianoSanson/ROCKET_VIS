@@ -111,11 +111,10 @@
     
     <section class="fifth_section" bind:this={waveformSection}>
     <div class="stickyContainer">
-        <h1 id="section_header">DESCOMPOSICION DEL AUDIO</h1>
+        <h1 id="section_header">EL SONIDO DEL ESPACIO</h1>
         <p style="color: aliceblue; font-size: 21px; text-align: center;">
-        Nos propusimos analizar cómo el uso del color en las escenas de la
-        pelicula se relaciona con lo que estas buscan transmitir.<br />A raiz de
-        esto llegamos a la siguiente clasificacion:
+        Extrajimos el audio de la obra y lo plasmamos en un formato de ondas. De esta
+        manera podemos ver como  los niveles de <br />audio varían con el pasar del tiempo:
         </p>
         <div class="waveform">
             <img src="./images/2001waveform.png" alt="waveform" bind:this={waveformimg} id="waveformimg" />
