@@ -63,7 +63,7 @@ onMount(() => {
         </div>
     </div>
 
-    <div class="section-content Duracion-Año">
+    <div class="section-content Duracion-Año centered">
         <div class="release_year">
             <h1 class="technic_head">Año de lanzamiento</h1>
             <h3 class="counter" data-target="1968">1968</h3>
@@ -75,20 +75,20 @@ onMount(() => {
         </div>
     </div>
 
-    <div class="section-content Presupuesto">
+    <div class="section-content Presupuesto centered">
         <h1 class="technic_head">Presupuesto</h1>
         <div class="row">
         <button class="money-button" on:click={handlePresupuestoClick} on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && handlePresupuestoClick()} aria-label="Show Presupuesto Actual">
             <img src="/images/money-svg.svg" alt="money-svg">
         </button>
-        <h3 class="counter" data-target="10" data-suffix="M USD">10 M USD</h3>
+        <h3 class="counter" data-target="10" data-suffix="M USD">10 M USD </h3>
         {#if showPresupuestoActual}
-            <h3 id="presupuesto_actual" class="counter" data-target="84" data-suffix="M USD (2024)" transition:fade>84 M USD (2024)</h3>
+            <h3 id="presupuesto_actual" class="counter" data-target="84" data-suffix="M USD (2024)" transition:fade>84 M (2024)</h3>
         {/if}
         </div>
     </div>
 
-    <div class="section-content Recaudacion">
+    <div class="section-content Recaudacion centered">
         <h1 class="technic_head">Recaudación</h1>
         <div class="row">
         <button class="money-button-2" on:click={handleRecaudacionClick} on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && handleRecaudacionClick()} aria-label="Show Recaudacion Actual">
@@ -96,7 +96,7 @@ onMount(() => {
         </button>
         <h3 class="counter" data-target="146" data-suffix="M USD">146 M USD</h3>
         {#if showRecaudacionActual}
-            <h3 id="recaudacion_actual" class="counter" data-target="1168" data-suffix="M USD (2024)" transition:fade>1168 M USD (2024)</h3>
+            <h3 id="recaudacion_actual" class="counter" data-target="1168" data-suffix="M USD (2024)" transition:fade>1168 M (2024)</h3>
         {/if}
         </div>
     </div>
@@ -137,11 +137,12 @@ onMount(() => {
 .technic_head {
     font-size: 80px;
     font-weight: 400;
-    margin: 1;
+    margin: 0;
+    align-items: center;
 }
 h3 {
     font-size: 120px;
-    margin: 80px 0;
+    margin: 5vh;
 }
 .counter {
     font-size: 120px;
@@ -163,5 +164,12 @@ h3 {
     margin: 0;
     color: #8fff9a;
     transition: opacity 0.5s ease-in-out;
+}
+
+.centered{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
 }
 </style>
