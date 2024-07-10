@@ -4,24 +4,11 @@
   import Stars from "./lib/Stars.svelte";
   import Cards from "./lib/Cards.svelte";
   import FifthSection from "./lib/FifthSection.svelte";
+  import SixthSection from "./lib/SixthSection.svelte";
 
   import { cardsDataColor, cardsDataNarrative } from "./lib/cardsData.js";
-  import { fade } from 'svelte/transition';
 
   let audio; // Definir la variable de audio
-
-  let scrollContainer;
-
-  let showPresupuestoActual = false;
-  let showRecaudacionActual = false;
-
-  function handlePresupuestoClick() {
-    showPresupuestoActual = true;
-  }
-
-  function handleRecaudacionClick() {
-    showRecaudacionActual = true;
-  }
 
   const startCounter = (element, target, suffix) => {
     const duration = 2000; // 2 segundos
@@ -64,13 +51,6 @@
     if (audio) {
       audio.play().catch((error) => {
         console.log("Error al reproducir el audio:", error);
-      });
-
-      scrollContainer.addEventListener("wheel", (e) => {
-        if (e.deltaY !== 0) {
-          e.preventDefault();
-          scrollContainer.scrollLeft += e.deltaY * 5; // Aumenta el multiplicador para más movimiento
-        }
       });
     }
 
@@ -189,67 +169,7 @@
   <FifthSection />
   <Stars />
 
-  <section class="sixth_section">
-    <h1 id="section_header">FICHA TECNICA</h1>
-    <div bind:this={scrollContainer} class="scroll-container" style="color: aliceblue;">
-      <div class="Director">
-        <h1 class="technic_head" style="font-size: 80px; font-weight:400; margin:0;">Dirigida Por</h1>
-        <div class="row" style="gap: 0;">
-          <h3 style="font-size: 120px; margin:80px">Stanley Kubrick</h3>
-          <img src="/images/stanley-kubrick.png" alt="Stanley Kubrick" />
-        </div>
-      </div>
-
-      <div class="Genero">
-        <h1 style="font-size: 80px; font-weight:400; margin:0;">Género</h1>
-        <h3 style="font-size: 120px; margin:80px">Ciencia Ficción</h3>
-        <div class="row" style="gap: 20px;">
-          <img src="/images/backshot-1.png" alt="backshot-1">
-          <img src="/images/backshot-2.png" alt="backshot-2">
-        </div>
-      </div>
-
-      <div class="Duracion-Año">
-        <div class="row">
-          <div class="release_year">
-            <h1 style="font-size: 80px; font-weight:400; margin:0;">Año de lanzamiento</h1>
-            <h3 style="font-size: 120px; margin:50px" data-target="1968" class="counter">1968</h3>
-          </div>
-
-          <div class="movie_length">
-            <h1 style="font-size: 80px; font-weight:400; margin:0;">Duración</h1>
-            <h3 style="font-size: 120px; margin:50px"  data-target="142" data-suffix=" minutos" class="counter">142 minutos</h3>
-          </div>
-        </div>
-      </div>
-
-      <div class="Presupuesto">
-        <h1 style="font-size: 80px; font-weight:400; margin:0;">Presupuesto</h1>
-        <div class="row" style="align-items: center; height: fit-content; margin-top: 50px; gap: 50px;">
-          <button class="money-button" on:click={handlePresupuestoClick} on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && handlePresupuestoClick()} aria-label="Show Presupuesto Actual">
-            <img src="/images/money-svg.svg" alt="money-svg">
-          </button>
-          <h3 style="font-size: 120px; margin: 0;" data-target="10" data-suffix="M USD" class="counter">10 M USD</h3>
-          {#if showPresupuestoActual}
-            <h3 id="presupuesto_actual" data-target="84" data-suffix="M USD (2024)" class="counter" transition:fade>84 M USD (2024)</h3>
-          {/if}
-        </div>
-      </div>
-      
-      <div class="Recaudacion">
-        <h1 style="font-size: 80px; font-weight:400; margin:0;">Recaudación</h1>
-        <div class="row" style="align-items: center; height: fit-content; margin-top: 50px; gap: 50px;">
-          <button class="money-button-2" on:click={handleRecaudacionClick} on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && handleRecaudacionClick()} aria-label="Show Recaudacion Actual">
-            <img src="/images/money-svg.svg" alt="money-svg">
-          </button>
-          <h3 style="font-size: 120px; margin: 0;" data-target="146" data-suffix="M USD" class="counter">146 M USD</h3>
-          {#if showRecaudacionActual}
-            <h3 id="recaudacion_actual" data-target="1168" data-suffix="M USD (2024)" class="counter" transition:fade>1168 M USD (2024)</h3>
-          {/if}
-        </div>
-      </div>
-    </div>
-  </section>
+  <SixthSection />
 
   <section class="seventh_section">
     <img
@@ -478,112 +398,6 @@
   .fourth_section {
     padding-top: 30px;
     margin: 50px;
-  }
-
-  .sixth_section {
-    padding-top: 30px;
-    margin: 50px;
-  }
-
-  .sixth_section {
-    height: 100vh;
-  }
-
-  .Director {
-    color: aliceblue;
-    min-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: fit-content;
-    margin-top: 5%;
-  }
-
-  .Genero {
-    min-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .Duracion-Año{
-    min-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5%;
-  }
-
-  .release_year{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .movie_length{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .Presupuesto{
-    min-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5%;
-  }
-
-  .money-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    height: fit-content;
-  }
-
-  #presupuesto_actual{
-    font-size: 120px;
-    margin:0;
-    color: #8FFF9A;
-    transition: opacity 0.5s ease-in-out; /* Transición suave */
-  }
-
-  .Recaudacion{
-    min-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5%;
-  }
-
-  .money-button-2 {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    height: fit-content;
-  }
-
-  #recaudacion_actual{
-    font-size: 120px;
-    margin:0;
-    color: #8FFF9A;
-    transition: opacity 0.5s ease-in-out; /* Transición suave */
-  }
-
-  .scroll-container {
-    display: flex;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    width: 100%;
-    height: 100vh;
-  }
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
   }
 
   .seventh_section {
