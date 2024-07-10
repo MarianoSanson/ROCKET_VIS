@@ -1,5 +1,9 @@
 # ANÁLISIS DE "2001: UNA ODISEA DEL ESPACIO"
 
+## Links
+- **Página Web**: [2001, una Descomposición Cinematográfica](https://2001-proyect.vercel.app)
+- **Repositorio**: [ROCKET_VIS](https://github.com/MarianoSanson/ROCKET_VIS/tree/entrega)
+
 ## Descripción
 Este proyecto presenta un análisis detallado de la película "2001: Odisea del Espacio" dirigida por Stanley Kubrick. El análisis abarca tres aspectos principales:
 
