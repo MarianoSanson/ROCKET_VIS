@@ -55,7 +55,7 @@ onMount(() => {
     </div>
 
     <div class="section-content Genero">
-        <h1 class="technic_head">Genero</h1>
+        <h1 class="technic_head">Género</h1>
         <h3>Ciencia Ficción</h3>
         <div class="row">
         <img src="/images/backshot-1.png" alt="backshot-1">
@@ -81,7 +81,7 @@ onMount(() => {
         <button class="money-button" on:click={handlePresupuestoClick} on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && handlePresupuestoClick()} aria-label="Show Presupuesto Actual">
             <img src="/images/money-svg.svg" alt="money-svg">
         </button>
-        <h3 class="counter" data-target="10" data-suffix="M USD">10 M USD </h3>
+        <h3 class="counter" data-target="10" data-suffix="M USD">10 M USD</h3>
         {#if showPresupuestoActual}
             <h3 id="presupuesto_actual" class="counter" data-target="84" data-suffix="M USD (2024)" transition:fade>84 M (2024)</h3>
         {/if}
@@ -117,9 +117,19 @@ onMount(() => {
     scroll-behavior: smooth;
     width: 100%;
     height: 80vh;
-    color: aliceblue ;
+    color: aliceblue;
     z-index: 1000;
 }
+
+.scroll-container::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit */
+  }
+
+  .scroll-container {
+    scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+  }
+
+
 .section-content {
     min-width: 100vw;
     display: flex;
