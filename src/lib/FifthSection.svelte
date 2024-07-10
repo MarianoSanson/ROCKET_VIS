@@ -112,7 +112,7 @@
     <section class="fifth_section" bind:this={waveformSection}>
     <div class="stickyContainer">
         <h1 id="section_header">EL SONIDO DEL ESPACIO</h1>
-        <p style="color: aliceblue; font-size: 21px; text-align: center;">
+        <p style="color: aliceblue; font-size: 22px; text-align: center; font-weight: 400">
         Extrajimos el audio de la obra y lo plasmamos en un formato de ondas. De esta
         manera podemos ver como  los niveles de <br />audio varían con el pasar del tiempo:
         </p>
