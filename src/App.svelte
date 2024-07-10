@@ -203,7 +203,7 @@
 <style>
   @font-face {
     font-family: "Futura";
-    src: url("/images/fonts/Futura Medium.ttf") format("truetype");
+    src: url("/fonts/Futura Medium.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
   }
