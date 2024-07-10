@@ -66,7 +66,7 @@ onMount(() => {
     <div class="section-content Duracion-Año centered">
         <div class="release_year">
             <h1 class="technic_head">Año de lanzamiento</h1>
-            <h3 class="counter" data-target="1968">1968</h3>
+            <h3>1968</h3>
         </div>
 
         <div class="movie_length">
