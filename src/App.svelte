@@ -106,8 +106,8 @@
     <h1 id="section_header">LA NARRACIÓN DE UNA ODISEA ESPACIAL</h1>
     <p style="color: aliceblue; font-size:22px; text-align:center">
       Para el analisis narrativo, decidimos particionar la pelicula en
-      segmentos de 5 minutos, y a cada segmento asignarle un momento en el arco
-      narrativo:
+      segmentos de 5 minutos y a cada segmento asignarle un momento en el arco
+      narrativo
     </p>
     <div class="narratives_container">
       <div class="narrative">
@@ -145,7 +145,7 @@
     <h1 id="section_header">2001 A TRAVES DE LOS COLORES</h1>
     <p style="color: aliceblue; font-size:22px; text-align:center">
       Nos propusimos analizar el uso del color en las escenas de la
-      pelicula para poder visualizar patrones en el uso del color.
+      pelicula para poder visualizar patrones en el uso del color
     </p>
     <div class="narratives_container">
 
@@ -194,7 +194,7 @@
     </div>
     <h3 style="color: aliceblue; font-size:24px; font-weight:400;">Mariano Sanson y Nicolas Wolodarsky</h3>
     <h3 style="color: aliceblue; font-size:24px; font-weight:400;">
-      Universidad Torcuato Di Tella | Licenciatura en Tecnología Digital
+      Universidad Torcuato Di Tella | Licenciatura en Tecnología Digital | Visualización de Datos
     </h3>
   </section>
 </main>
