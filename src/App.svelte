@@ -149,12 +149,13 @@
     </p>
     <div class="narratives_container">
 
-      <div id="example_card"></div>
 
       <div class="narrative">
         <div class="category" style="background-color:#CF1E1E; z-index:20"></div>
         <h4 style="font-size: 22px; font-weight:400">Color principal</h4>
       </div>
+
+      <div id="example_card"></div>
 
       <div class="narrative">
         <div class="category" style="background-color: #FFFBA3;"></div>
@@ -374,6 +375,8 @@
     border-radius: 10px;
     background-color: #CF1E1E;
     border: 2px #FFFBA3 solid;
+    z-index: 10;
+    margin: 0;
   }
 
   .narrative {
