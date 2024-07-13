@@ -201,20 +201,13 @@
 |
 
 <style>
-  @font-face {
-    font-family: "Futura";
-    src: url("/fonts/Futura Medium.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
+  *{
+    font-family: 'Urbanist';
   }
 
   :global(html, body) {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     margin: 0;
-  }
-
-  * {
-    font-family: Futura;
   }
 
   section {
